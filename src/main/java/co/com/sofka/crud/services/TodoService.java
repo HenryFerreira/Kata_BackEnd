@@ -5,14 +5,10 @@ import co.com.sofka.crud.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-
 @Service
 public class TodoService {
     @Autowired
     private TodoRepository todoRepository;
-
 
     //Listar todos los elementos
     public Iterable<Todo> getAllTodos(){
@@ -34,7 +30,4 @@ public class TodoService {
     public void deleteTodo(Long id){
         this.todoRepository.delete(getTodoById(id));
     }
-
-
-
 }
