@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+//Permite el intercambio entre dominios
+@CrossOrigin(origins = "http://localhost:3000/")
 public class TodoController {
     @Autowired
     TodoService todoService;
@@ -17,7 +19,7 @@ public class TodoController {
     }
 
     //Obtener todos por la id
-    @GetMapping(value = "api/todo/{id}")
+    @GetMapping(value = "api/{id}/todo/")
     public Todo getTodoById(@PathVariable("id") Long id){
         //Si le id no existe devuelve una excepcion
         return this.todoService.getTodoById(id);
@@ -40,7 +42,7 @@ public class TodoController {
     }
 
     //Eliminar todos de la lista
-    @DeleteMapping(value = "/api/delete/{id}")
+    @DeleteMapping(value = "/api/{id}/todo")
     public void deleteTodo(@PathVariable("id") Long id){
         this.todoService.deleteTodo(id);
     }
